@@ -1,0 +1,23 @@
+{
+	"implementation for daily challenge": {
+		"scope": "typescript",
+		"prefix": "impl",
+        "body": [
+            "import { loadInput } from \"utils\";",
+            "",
+            "export function part1(input: Array<string>) {",
+            "  return 0;",
+            "}",
+            "",
+            "export function part2(input: Array<string>) {",
+            "  return 0;",
+            "}",
+            "",
+            "if (import.meta.main) {",
+            "  console.log(part1(loadInput($1)));",
+            "  console.log(part2(loadInput($1)));",
+            "}"
+        ],
+		"description": "implementation for daily challenge"
+	}
+}
