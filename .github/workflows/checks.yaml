@@ -1,4 +1,4 @@
-name: Checks
+name: checks
 on:
   push:
     branches: [main]
@@ -11,12 +11,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: denoland/setup-deno@v2
-      - run: deno fmt --check
+      - run: deno format --check
       - run: deno lint
 
   tests:
     runs-on: ubuntu-latest
     name: tests
+    permissions:
+      checks: write
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
       - uses: denoland/setup-deno@v2
