@@ -1,0 +1,9 @@
+{
+  "tasks": {},
+  "imports": {
+    "@std/expect": "jsr:@std/expect@1",
+    "@std/collections": "jsr:@std/collections@1",
+    "@std/path": "jsr:@std/path@1",
+    "utils": "./utils/mod.ts"
+  }
+}
