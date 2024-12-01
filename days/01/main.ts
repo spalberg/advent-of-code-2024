@@ -16,7 +16,7 @@ export function part2(input: Array<string>) {
   let lastDelta = 0;
   let lastNumber = -1;
   for (let i = 0; i < l.length; i += 1) {
-    if(l[i] === lastNumber) {
+    if (l[i] === lastNumber) {
       result += lastDelta;
       continue;
     }

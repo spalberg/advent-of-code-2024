@@ -1,4 +1,4 @@
 # Advent of Code 2024
 
-> [!NOTE]  
+> [!NOTE]
 > Getting ready...
