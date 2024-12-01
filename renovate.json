@@ -11,7 +11,7 @@
       "automerge": true
     },
     {
-      "matchUpdateTypes": ["pin"],
+      "matchUpdateTypes": ["pinDigest"],
       "matchManagers": ["github-actions"],
       "enabled": false
     }
