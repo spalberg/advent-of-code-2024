@@ -11,8 +11,8 @@ jobs:
   autofix:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - uses: denoland/setup-deno@v2
       - run: deno fmt
       - run: deno lint --fix
-      - uses: autofix-ci/action@v1
+      - uses: autofix-ci/action@2891949f3779a1cafafae1523058501de3d4e944 # v1

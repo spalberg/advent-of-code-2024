@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     name: format and lint
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - uses: denoland/setup-deno@v2
       - run: deno fmt --check
       - run: deno lint
@@ -21,10 +21,10 @@ jobs:
       checks: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - uses: denoland/setup-deno@v2
       - run: deno test --junit-path=./junit.xml
-      - uses: EnricoMi/publish-unit-test-result-action@v2
+      - uses: EnricoMi/publish-unit-test-result-action@170bf24d20d201b842d7a52403b73ed297e6645b # v2
         if: always()
         with:
           files: junit.xml
