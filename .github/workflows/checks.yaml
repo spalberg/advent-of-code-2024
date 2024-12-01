@@ -10,7 +10,7 @@ jobs:
     name: format and lint
     steps:
       - uses: actions/checkout@v4
-      - uses: denoland/setup-deno@v1
+      - uses: denoland/setup-deno@v2
       - run: deno fmt --check
       - run: deno lint
 
@@ -19,7 +19,7 @@ jobs:
     name: tests
     steps:
       - uses: actions/checkout@v4
-      - uses: denoland/setup-deno@v1
+      - uses: denoland/setup-deno@v2
       - run: deno test --junit-path=./junit.xml
       - uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
