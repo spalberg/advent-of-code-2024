@@ -46,6 +46,6 @@ function parseLists(input: Array<string>): [Array<number>, Array<number>] {
 }
 
 if (import.meta.main) {
-  console.log(part1(loadInput(1)));
-  console.log(part2(loadInput(1)));
+  console.log(part1(await loadInput(1)));
+  console.log(part2(await loadInput(1)));
 }
