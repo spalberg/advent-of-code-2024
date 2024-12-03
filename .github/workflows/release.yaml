@@ -15,6 +15,9 @@ on:
 jobs:
   checks:
     uses: ./.github/workflows/checks.yaml
+    permissions:
+      checks: write
+      pull-requests: write
 
   release:
     runs-on: ubuntu-latest
@@ -36,5 +39,4 @@ jobs:
     uses: ./.github/workflows/publish.yaml
     needs: release
     permissions:
-      contents: read
       id-token: write
