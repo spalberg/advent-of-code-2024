@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: denoland/setup-deno@v2
-      - run: deno test --junit-path=./junit.xml
+      - run: deno test --allow-read --parallel --junit-path=./junit.xml
       - uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
