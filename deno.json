@@ -4,7 +4,8 @@
   "license": "MIT",
   "exports": "./cli.ts",
   "tasks": {
-    "cli": "deno run --allow-read ./cli.ts"
+    "cli": "deno run --allow-read ./cli.ts",
+    "update:version": "deno run -A ./scripts/update_version.ts"
   },
   "imports": {
     "@cliffy/ansi": "jsr:@cliffy/ansi@1.0.0-rc.5",
@@ -13,6 +14,7 @@
     "@std/expect": "jsr:@std/expect@1",
     "@std/collections": "jsr:@std/collections@1",
     "@std/path": "jsr:@std/path@1",
+    "@std/semver": "jsr:@std/semver@^1.0.3",
     "@std/streams": "jsr:@std/streams@^1.0.8",
     "@std/testing": "jsr:@std/testing@^1.0.5",
     "utils": "./utils/mod.ts"
