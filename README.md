@@ -2,10 +2,10 @@
 
 [![JSR](https://jsr.io/badges/@aoc/2024)](https://jsr.io/@aoc/2024)
 
-Welcome to the Advent of Code 2024! This repository is where the magic happens,
-with all solutions written in TypeScript and running on Deno – the best anagram
-of Node! Dive into the daily challenges and explore the code. Happy coding and
-may your algorithms be ever efficient!
+Welcome to the [Advent of Code 2024](https://adventofcode.com/2024)! This
+repository is where the magic happens, with all solutions written in TypeScript
+and running on Deno – the best anagram of Node! Dive into the daily challenges
+and explore the code. Happy coding and may your algorithms be ever efficient!
 
 ## CLI
 
