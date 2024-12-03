@@ -10,16 +10,24 @@ and explore the code. Happy coding and may your algorithms be ever efficient!
 ## CLI
 
 You don't have to check out this repository to test my code against your inputs!
-Simply run the published cli via JSR:
+Simply run the published cli via JSR.
+
+Usage:
 
 ```bash
-deno run -R -r="jsr:@aoc/2024" jsr:@aoc/2024 --help
+# To list all options
+deno run jsr:@aoc/2024 --help
+# To use the interactive cli
+deno run -RN jsr:@aoc/2024
+# To directly execute a day with a local input file
+deno run -R jsr:@aoc/2024 -d 2 -i ./inputs/2.txt
+# To directly execute a day with a remote input file
+deno run -RN jsr:@aoc/2024 -d 2 -i https://raw.githubusercontent.com/spalberg/advent-of-code-2024/refs/heads/main/inputs/2.txt
+# To pipe the input into the cli
+cat ./inputs/2.txt | deno run jsr:@aoc/2024 -d 2
 ```
 
-or directly with day and input:
-
-```bash
-deno run -R -r="jsr:@aoc/2024" jsr:@aoc/2024 -d 2 -i ./inputs/2.txt
-```
-
-The `-r="jsr:@aoc/2024"` flag is necessary to get the latest version every time.
+> [!TIP]
+> If you can't see the current day you might have an older version of the cli
+> cached. Run your command with the `-r` flag to get the latest version, i.e.:
+> `deno run -r jsr:@aoc/2024 --help`.
