@@ -39,4 +39,5 @@ jobs:
     uses: ./.github/workflows/publish.yaml
     needs: release
     permissions:
+      contents: read
       id-token: write
