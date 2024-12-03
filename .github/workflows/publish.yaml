@@ -1,7 +1,12 @@
 name: publish
 on:
   workflow_dispatch: {}
-  workflow_call: {}
+  workflow_call:
+    inputs:
+      ref:
+        description: ref to publish
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -12,5 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.ref || github.ref }}
       - uses: denoland/setup-deno@v2
       - run: deno publish

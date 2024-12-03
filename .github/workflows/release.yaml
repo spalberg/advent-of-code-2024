@@ -24,6 +24,8 @@ jobs:
     needs: checks
     permissions:
       contents: write
+    outputs:
+      version: ${{ steps.update-version.outputs.version }}
     steps:
       - uses: actions/checkout@v4
       - uses: denoland/setup-deno@v2
@@ -38,6 +40,8 @@ jobs:
   publish:
     uses: ./.github/workflows/publish.yaml
     needs: release
+    with:
+      ref: v${{ needs.release.outputs.version }}
     permissions:
       contents: read
       id-token: write
