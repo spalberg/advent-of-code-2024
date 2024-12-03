@@ -2,7 +2,7 @@ import { colors } from "@cliffy/ansi/colors";
 import { Command } from "@cliffy/command";
 import { Input, Select } from "@cliffy/prompt";
 import { readLinesFromFile } from "utils";
-import { days, getSolution } from "./days/mod.ts";
+import { days } from "./days/mod.ts";
 import denoJson from "./deno.json" with { type: "json" };
 import {
   readLinesFromStdin,
@@ -13,7 +13,7 @@ const list = new Command()
   .description("List all available solutions")
   .action(() => {
     console.log("Available solutions:");
-    for (const day of Object.keys(days)) {
+    for (const day of days.keys()) {
       console.log(`- ${day}`);
     }
   });
@@ -22,7 +22,7 @@ const main = new Command()
   .name("Advent of Code - 2024")
   .version(denoJson.version)
   .description("...")
-  .option("-d, --day <day:string>", "Day to run")
+  .option("-d, --day <day:number>", "Day to run")
   .option("-i, --input <input:file>", "Input file, local path or remote URL")
   .action(async (options) => {
     let input: Array<string> | null = null;
@@ -43,7 +43,7 @@ const main = new Command()
       Deno.exit(1);
     }
     const day = options.day ?? await selectDay();
-    const solution = getSolution(day);
+    const solution = days.get(day);
     if (solution == null) {
       console.error(`Day ${day} not found`);
       Deno.exit(1);
@@ -60,11 +60,11 @@ async function provideInput(): Promise<string> {
   });
 }
 
-async function selectDay(): Promise<string> {
+async function selectDay(): Promise<number> {
   return await Select.prompt({
     message: "Select day",
-    options: Object.keys(days).map((day) => ({
-      name: day.toString().padStart(2, "0"),
+    options: [...days.keys()].map((day) => ({
+      name: day.toString(),
       value: day,
     })),
   });

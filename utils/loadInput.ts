@@ -6,7 +6,7 @@ export function loadInput(day: number): Promise<Array<string>> {
     dirname(fromFileUrl(import.meta.url)),
     "..",
     "inputs",
-    `${day.toString().padStart(2, "0")}.txt`,
+    `${day}.txt`,
   );
   return readLinesFromFile(path);
 }
