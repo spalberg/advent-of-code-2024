@@ -13,11 +13,13 @@ You don't have to check out this repository to test my code against your inputs!
 Simply run the published cli via JSR:
 
 ```bash
-deno run -R jsr:@aoc/2024 --help
+deno run -R -r="jsr:@aoc/2024" jsr:@aoc/2024 --help
 ```
 
 or directly with day and input:
 
 ```bash
-deno run -R jsr:@aoc/2024 -d 2 -i ./inputs/2.txt
+deno run -R -r="jsr:@aoc/2024" jsr:@aoc/2024 -d 2 -i ./inputs/2.txt
 ```
+
+The `-r="jsr:@aoc/2024"` flag is necessary to get the latest version every time.
