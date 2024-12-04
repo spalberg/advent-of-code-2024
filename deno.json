@@ -4,7 +4,7 @@
   "license": "MIT",
   "exports": "./cli.ts",
   "tasks": {
-    "cli": "deno run --allow-read ./cli.ts",
+    "cli": "deno run -RN ./cli.ts",
     "update:version": "deno run -A ./scripts/update_version.ts"
   },
   "imports": {

@@ -1,6 +1,7 @@
 import { colors } from "@cliffy/ansi/colors";
 import { Command } from "@cliffy/command";
 import { Input, Select } from "@cliffy/prompt";
+import { greaterThan, parse } from "@std/semver";
 import { readLinesFromFile } from "utils";
 import { days } from "./days/mod.ts";
 import denoJson from "./deno.json" with { type: "json" };
@@ -15,6 +16,33 @@ const list = new Command()
     console.log("Available solutions:");
     for (const day of days.keys()) {
       console.log(`- ${day}`);
+    }
+  });
+
+const update = new Command()
+  .description("Update to the latest version")
+  .action(async () => {
+    const { latest } = await fetch(`https://jsr.io/${denoJson.name}/meta.json`)
+      .then(
+        (res) => res.json(),
+      );
+    const isUpdateAvailable = greaterThan(
+      parse(latest),
+      parse(denoJson.version),
+    );
+    if (isUpdateAvailable) {
+      console.log(
+        colors.bold.yellow(
+          `Update available: ${denoJson.version} -> ${latest}`,
+        ),
+      );
+      console.log("Updating...");
+      await new Deno.Command(Deno.execPath(), {
+        args: ["run", "-r", `jsr:@aoc/2024`, "--help"],
+      }).output();
+      console.log(colors.bold.green("Updated successfully"));
+    } else {
+      console.log(colors.bold.green("Already up to date"));
     }
   });
 
@@ -83,5 +111,6 @@ function isWebUrl(path: string): boolean {
 if (import.meta.main) {
   await main
     .command("list", list)
+    .command("update", update)
     .parse(Deno.args);
 }
