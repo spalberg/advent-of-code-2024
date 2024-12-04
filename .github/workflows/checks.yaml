@@ -24,8 +24,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: denoland/setup-deno@v2
-      - run: deno test --allow-read --parallel --junit-path=./junit.xml
-      - uses: EnricoMi/publish-unit-test-result-action@v2
-        if: always()
+      - run: deno test --allow-read --parallel --coverage=cov/ --junit-path=./junit.xml
+      - run: deno coverage --lcov cov/ > cov.lcov
+      - uses: codecov/codecov-action@v5
         with:
-          files: junit.xml
+          token: ${{ secrets.CODECOV_TOKEN }}
+      - uses: codecov/test-results-action@v1
+        if: ${{ !cancelled() }}
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

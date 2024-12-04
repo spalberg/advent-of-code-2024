@@ -1,6 +1,7 @@
 {
   "version": "4",
   "specifiers": {
+    "jsr:@aoc/2024@1.3.0": "1.3.0",
     "jsr:@cliffy/ansi@1.0.0-rc.5": "1.0.0-rc.5",
     "jsr:@cliffy/command@1.0.0-rc.5": "1.0.0-rc.5",
     "jsr:@cliffy/flags@1.0.0-rc.5": "1.0.0-rc.5",
@@ -31,6 +32,17 @@
     "npm:@types/node@*": "22.5.4"
   },
   "jsr": {
+    "@aoc/2024@1.3.0": {
+      "integrity": "ed1fada613b52b8330826e90cd1ad1591a020c3a7599d70b189c487357b6579f",
+      "dependencies": [
+        "jsr:@cliffy/ansi",
+        "jsr:@cliffy/command",
+        "jsr:@cliffy/prompt",
+        "jsr:@std/collections",
+        "jsr:@std/path@1",
+        "jsr:@std/streams"
+      ]
+    },
     "@cliffy/ansi@1.0.0-rc.5": {
       "integrity": "85a4dba4da5d8278dcdfeea98672cd15706c244833f82edc60c61f410d9fc1a9",
       "dependencies": [
