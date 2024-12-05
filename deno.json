@@ -18,5 +18,25 @@
     "@std/streams": "jsr:@std/streams@^1.0.8",
     "@std/testing": "jsr:@std/testing@^1.0.5",
     "utils": "./utils/mod.ts"
+  },
+  "deploy": {
+    "project": "ddbf51b9-a707-4c93-912f-7be296f372ee",
+    "exclude": [
+      "**/node_modules",
+      ".github",
+      ".git",
+      ".vscode",
+      "days/**/main_test.ts",
+      "inputs",
+      "scripts",
+      ".editorconfig",
+      ".gitignore",
+      ".gitmodules",
+      "cli.ts",
+      "README.md",
+      "renovate.json"
+    ],
+    "include": [],
+    "entrypoint": "saas.ts"
   }
 }

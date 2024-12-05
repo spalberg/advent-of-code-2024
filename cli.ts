@@ -50,7 +50,7 @@ const main = new Command()
   .name("Advent of Code - 2024")
   .version(denoJson.version)
   .description(`
-    Advent of Code 2024 solutions by spalberg
+    Solutions to Advent of Code 2024 by spalberg
 
     Source code: https://github.com/spalberg/advent-of-code-2024
   `)

@@ -31,3 +31,21 @@ cat ./inputs/2.txt | deno run jsr:@aoc/2024 -d 2
 > Deno caches jsr packages, so there might be new solutions already but your cli
 > version is out of date. Simply run `deno run -A jsr:@aoc/2024 update` to
 > update to the latest version.
+
+# SaaS (Solutions as a Service)
+
+You don't have deno installed and just want to get some solutions for your
+puzzle inputs?\
+SaaS is the future and here to save you!
+
+// TOOD ...
+
+```pswh
+irm -method "post" https://aoc-2024.palberg.de/days/2 -Body (gc -raw ./inputs/2.txt)
+```
+
+// TODO curl not working yet...
+
+```bash
+curl -X POST -d @./inputs/2.txt https://aoc-2024.palberg.de/days/2
+```
