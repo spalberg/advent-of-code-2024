@@ -20,7 +20,7 @@ const list = new Command()
   });
 
 const update = new Command()
-  .description("Update to the latest version")
+  .description("Update to the latest version, if needed")
   .action(async () => {
     const { latest } = await fetch(`https://jsr.io/${denoJson.name}/meta.json`)
       .then(
@@ -49,7 +49,31 @@ const update = new Command()
 const main = new Command()
   .name("Advent of Code - 2024")
   .version(denoJson.version)
-  .description("...")
+  .description(`
+    Advent of Code 2024 solutions by spalberg
+
+    Source code: https://github.com/spalberg/advent-of-code-2024
+  `)
+  .example(
+    "To list all options",
+    "deno run jsr:@aoc/2024 --help",
+  )
+  .example(
+    "To use the interactive cli",
+    "deno run -RN jsr:@aoc/2024",
+  )
+  .example(
+    "To directly execute a day with a local input file",
+    "deno run -R jsr:@aoc/2024 -d 2 -i ./inputs/2.txt",
+  )
+  .example(
+    "To directly execute a day with a remote input file",
+    "deno run -RN jsr:@aoc/2024 -d 2 -i https://pastebin.com/your-input",
+  )
+  .example(
+    "To pipe the input into the cli",
+    "cat ./inputs/2.txt | deno run jsr:@aoc/2024 -d 2",
+  )
   .option("-d, --day <day:number>", "Day to run")
   .option("-i, --input <input:file>", "Input file, local path or remote URL")
   .action(async (options) => {

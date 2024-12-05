@@ -22,12 +22,12 @@ deno run -RN jsr:@aoc/2024
 # To directly execute a day with a local input file
 deno run -R jsr:@aoc/2024 -d 2 -i ./inputs/2.txt
 # To directly execute a day with a remote input file
-deno run -RN jsr:@aoc/2024 -d 2 -i https://raw.githubusercontent.com/spalberg/advent-of-code-2024/refs/heads/main/inputs/2.txt
+deno run -RN jsr:@aoc/2024 -d 2 -i https://pastebin.com/your-input
 # To pipe the input into the cli
 cat ./inputs/2.txt | deno run jsr:@aoc/2024 -d 2
 ```
 
 > [!TIP]
-> If you can't see the current day you might have an older version of the cli
-> cached. Run your command with the `-r` flag to get the latest version, i.e.:
-> `deno run -r jsr:@aoc/2024 --help`.
+> Deno caches jsr packages, so there might be new solutions already but your cli
+> version is out of date. Simply run `deno run -A jsr:@aoc/2024 update` to
+> update to the latest version.
