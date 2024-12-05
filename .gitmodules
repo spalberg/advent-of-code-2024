@@ -1,0 +1,3 @@
+[submodule "inputs"]
+	path = inputs
+	url = git@github.com:spalberg/advent-of-code-2024-inputs.git

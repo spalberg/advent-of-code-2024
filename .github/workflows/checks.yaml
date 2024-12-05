@@ -23,6 +23,9 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: true
+          token: ${{ secrets.INPUTS_PAT }}
       - uses: denoland/setup-deno@v2
       - run: deno test --allow-read --parallel --coverage=cov/ --junit-path=./junit.xml
       - run: deno coverage --lcov cov/ > cov.lcov
