@@ -6,6 +6,7 @@ export default {
   async fetch(req) {
     const url = new URL(req.url);
     url.pathname = url.pathname.replace(/\/$/, "");
+    console.log(`Request for ${url.pathname}`);
 
     if (url.pathname === "/info") {
       return new Response(
@@ -49,7 +50,6 @@ export default {
       }
 
       const num = parseInt(match.pathname.groups.num ?? "", 10);
-      console.log(`Providing solution for day ${num}`);
       const day = days.get(num);
       if (day == null) {
         return new Response(null, { status: 404 });
