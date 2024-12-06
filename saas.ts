@@ -6,7 +6,7 @@ export default {
   async fetch(req) {
     const url = new URL(req.url);
     url.pathname = url.pathname.replace(/\/$/, "");
-    console.log(`Request for ${url.pathname}`);
+    console.debug(`Request for ${url.pathname}`);
 
     if (url.pathname === "/info") {
       return new Response(
@@ -54,6 +54,7 @@ export default {
       if (day == null) {
         return new Response(null, { status: 404 });
       }
+      console.log(`Processing day ${num}`);
       return new Response(
         json({ day: num, part1: day.part1(input), part2: day.part2(input) }),
         jsonHeaders,
