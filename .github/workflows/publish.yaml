@@ -13,7 +13,7 @@ permissions:
   id-token: write
 
 jobs:
-  publish:
+  jsr:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,3 +21,16 @@ jobs:
           ref: ${{ inputs.ref || github.ref }}
       - uses: denoland/setup-deno@v2
       - run: deno publish
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref || github.ref }}
+      - uses: denoland/setup-deno@v2
+      - uses: denoland/deployctl@v1
+        with:
+          project: aoc-2024
+          entrypoint: saas.ts
+          root: .
