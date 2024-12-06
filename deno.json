@@ -1,6 +1,6 @@
 {
   "name": "@aoc/2024",
-  "version": "1.4.3",
+  "version": "1.5.0",
   "license": "MIT",
   "exports": "./cli.ts",
   "tasks": {
