@@ -15,4 +15,5 @@ jobs:
       - uses: denoland/setup-deno@v2
       - run: deno fmt
       - run: deno lint --fix
+        continue-on-error: true
       - uses: autofix-ci/action@v1

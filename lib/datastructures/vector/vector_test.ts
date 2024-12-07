@@ -50,6 +50,16 @@ export function vectorImplTestSuite(vector: Vector<number>) {
     expect(vector.indexOf(Vector.from([1, 2, 3, 4, 5, 6, 7]))).toBe(-1);
   });
 
+  it("method subvector", () => {
+    expect(vector.subvector(0, vector.length).equals(vector)).toBe(true);
+    expect(vector.subvector(1, 3).equals(Vector.from([2, 3, 4]))).toBe(true);
+    expect(vector.subvector(1, 3).subvector(1, 1).equals(Vector.from([3])))
+      .toBe(true);
+    expect(() => vector.subvector(4, -1)).toThrow();
+    expect(() => vector.subvector(-1, 1)).toThrow();
+    expect(() => vector.subvector(1, 6)).toThrow();
+  });
+
   it("method [Symbol.iterator]", () => {
     const values = [...vector];
     expect(values).toEqual([1, 2, 3, 4, 5, 6]);
