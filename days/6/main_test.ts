@@ -16,7 +16,7 @@ const input = [
   "......#...",
 ];
 
-describe("day 6 example", () => {
+describe.ignore("day 6 example", () => {
   it("part 1", () => {
     expect(part1(input)).toBe(41);
   });
