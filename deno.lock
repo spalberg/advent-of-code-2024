@@ -12,12 +12,14 @@
     "jsr:@std/assert@1": "1.0.8",
     "jsr:@std/assert@1.0.0-rc.2": "1.0.0-rc.2",
     "jsr:@std/assert@^1.0.8": "1.0.8",
+    "jsr:@std/assert@^1.0.9": "1.0.9",
     "jsr:@std/bytes@^1.0.3": "1.0.4",
     "jsr:@std/cli@1.0.0-rc.2": "1.0.0-rc.2",
     "jsr:@std/collections@1": "1.0.9",
     "jsr:@std/data-structures@^1.0.4": "1.0.4",
     "jsr:@std/encoding@1.0.0-rc.2": "1.0.0-rc.2",
     "jsr:@std/expect@1": "1.0.8",
+    "jsr:@std/expect@^1.0.9": "1.0.9",
     "jsr:@std/fmt@~0.225.4": "0.225.6",
     "jsr:@std/fs@^1.0.5": "1.0.6",
     "jsr:@std/internal@^1.0.5": "1.0.5",
@@ -28,6 +30,7 @@
     "jsr:@std/semver@^1.0.3": "1.0.3",
     "jsr:@std/streams@^1.0.8": "1.0.8",
     "jsr:@std/testing@^1.0.5": "1.0.5",
+    "jsr:@std/testing@^1.0.6": "1.0.6",
     "jsr:@std/text@1.0.0-rc.1": "1.0.0-rc.1",
     "npm:@types/node@*": "22.5.4"
   },
@@ -103,6 +106,12 @@
         "jsr:@std/internal"
       ]
     },
+    "@std/assert@1.0.9": {
+      "integrity": "a9f0c611a869cc791b26f523eec54c7e187aab7932c2c8e8bea0622d13680dcd",
+      "dependencies": [
+        "jsr:@std/internal"
+      ]
+    },
     "@std/bytes@1.0.4": {
       "integrity": "11a0debe522707c95c7b7ef89b478c13fb1583a7cfb9a85674cd2cc2e3a28abc"
     },
@@ -122,6 +131,13 @@
       "integrity": "27e40d8f3aefb372fc6a703fb0b69e34560e72a2f78705178babdffa00119a5f",
       "dependencies": [
         "jsr:@std/assert@^1.0.8",
+        "jsr:@std/internal"
+      ]
+    },
+    "@std/expect@1.0.9": {
+      "integrity": "108bb428f17492ac40439479e1dc55fbaae581530e905a8603f97305842a5a01",
+      "dependencies": [
+        "jsr:@std/assert@^1.0.9",
         "jsr:@std/internal"
       ]
     },
@@ -165,6 +181,13 @@
         "jsr:@std/path@^1.0.8"
       ]
     },
+    "@std/testing@1.0.6": {
+      "integrity": "9192ded2d34065f4c959fdc1921fe836770abb9194410c2cc8a0fff4eff5c893",
+      "dependencies": [
+        "jsr:@std/assert@^1.0.9",
+        "jsr:@std/internal"
+      ]
+    },
     "@std/text@1.0.0-rc.1": {
       "integrity": "34c722203e87ee12792c8d4a0cd2ee0e001341cbce75b860fc21be19d62232b0"
     }
@@ -191,6 +214,14 @@
       "jsr:@std/semver@^1.0.3",
       "jsr:@std/streams@^1.0.8",
       "jsr:@std/testing@^1.0.5"
-    ]
+    ],
+    "members": {
+      "lib/datastructures": {
+        "dependencies": [
+          "jsr:@std/expect@^1.0.9",
+          "jsr:@std/testing@^1.0.6"
+        ]
+      }
+    }
   }
 }

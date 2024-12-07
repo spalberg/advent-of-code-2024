@@ -1,0 +1,13 @@
+{
+  "name": "@pal/datastructures",
+  "version": "0.1.0",
+  "exports": "./mod.ts",
+  "tasks": {
+    "dev": "deno test --watch"
+  },
+  "license": "MIT",
+  "imports": {
+    "@std/expect": "jsr:@std/expect@^1.0.9",
+    "@std/testing": "jsr:@std/testing@^1.0.6"
+  }
+}
