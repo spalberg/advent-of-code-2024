@@ -1,11 +1,16 @@
 import { Vector } from "../vector/mod.ts";
+import { ArrayVector } from "../vector/vector.ts";
 
 export class Grid<T> {
   #data: Array<Array<T>>;
 
-  constructor(data: Array<Array<T>>) {
+  private constructor(data: Array<Array<T>>) {
     this.#data = data;
     this.#validatekDimensions();
+  }
+
+  static from<T>(data: Array<Array<T>>): Grid<T> {
+    return new Grid(data);
   }
 
   static fromStrings(strings: Array<string>): Grid<string> {
@@ -26,7 +31,7 @@ export class Grid<T> {
 
   *rows(): Generator<Vector<T>> {
     for (const row of this.#data) {
-      yield new Vector(row);
+      yield ArrayVector.from(row);
     }
   }
 
@@ -51,7 +56,7 @@ export class GridColumnVector<T> extends Vector<T> {
   #x: number;
 
   constructor(grid: Grid<T>, x: number) {
-    super([]);
+    super();
     this.#grid = grid;
     this.#x = x;
   }
