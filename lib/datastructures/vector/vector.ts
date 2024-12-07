@@ -39,6 +39,13 @@ export abstract class Vector<T> {
     return this.indexOf(value) !== -1;
   }
 
+  subvector(startIndex: number, length: number): Vector<T> {
+    if (startIndex < 0 || length < 0 || startIndex + length > this.length) {
+      throw new RangeError("Invalid startIndex or length");
+    }
+    return new SubVector(this, startIndex, length);
+  }
+
   *[Symbol.iterator](): Generator<T> {
     for (let i = 0; i < this.length; i++) {
       yield this.at(i)!;
@@ -95,24 +102,25 @@ export class ArrayVector<T> extends Vector<T> {
 
 export class SubVector<T> extends Vector<T> {
   #vector: Vector<T>;
-  #start: number;
-  #end: number;
+  startIndex: number;
+  #length: number;
 
-  constructor(vector: Vector<T>, start: number, end: number) {
+  constructor(vector: Vector<T>, index: number, length: number) {
     super();
+    // TODO unwrap vector if it is a SubVector
     this.#vector = vector;
-    this.#start = start;
-    this.#end = end;
+    this.startIndex = index;
+    this.#length = length;
   }
 
   override get length(): number {
-    return this.#end - this.#start;
+    return this.#length;
   }
 
   override at(index: number): T | null {
     if (index < 0 || index >= this.length) {
       return null;
     }
-    return this.#vector.at(this.#start + index);
+    return this.#vector.at(this.startIndex + index);
   }
 }
