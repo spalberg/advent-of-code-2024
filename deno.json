@@ -4,6 +4,7 @@
   "license": "MIT",
   "exports": "./cli.ts",
   "tasks": {
+    "dev": "deno test -A --watch --hide-stacktraces",
     "cli": "deno run -RN ./cli.ts",
     "update:version": "deno run --quiet -A ./scripts/update_version.ts"
   },
@@ -11,7 +12,7 @@
     "@cliffy/ansi": "jsr:@cliffy/ansi@1.0.0-rc.5",
     "@cliffy/command": "jsr:@cliffy/command@1.0.0-rc.5",
     "@cliffy/prompt": "jsr:@cliffy/prompt@1.0.0-rc.5",
-    "@pal/datastructures": "jsr:@pal/datastructures@^0.1.0",
+    "@pal/datastructures": "jsr:@pal/datastructures@^0.1.1",
     "@std/expect": "jsr:@std/expect@1",
     "@std/collections": "jsr:@std/collections@1",
     "@std/path": "jsr:@std/path@1",
