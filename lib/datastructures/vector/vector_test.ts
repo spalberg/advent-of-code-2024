@@ -18,9 +18,6 @@ describe("ArrayVector", () => {
   vectorImplTestSuite(Vector.from([1, 2, 3, 4, 5, 6]));
 });
 
-describe("SubVector", () => {
-});
-
 export function vectorImplTestSuite(vector: Vector<number>) {
   it("method at", () => {
     expect(vector.at(0)).toBe(1);

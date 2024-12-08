@@ -41,6 +41,8 @@ export class Grid<T> {
     }
   }
 
+  // TODO *fallingDiagonals()
+
   #validatekDimensions() {
     if (this.#data.length === 0) {
       throw new Error("Grid is empty");
