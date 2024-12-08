@@ -20,24 +20,16 @@ export class GridPosition<T> {
     this.#y = y;
   }
 
-  static fromString<T>(grid: Grid<T>, string: string): GridPosition<T> {
-    const pos = string.split(",").map(Number);
-    if (pos.length !== 2) {
-      throw new Error("Invalid position string");
-    }
-    return new GridPosition(grid, pos[0], pos[1]);
-  }
-
-  get position(): [number, number] {
-    return [this.#x, this.#y];
-  }
-
   get x(): number {
     return this.#x;
   }
 
   get y(): number {
     return this.#y;
+  }
+
+  get position(): [number, number] {
+    return [this.#x, this.#y];
   }
 
   get grid(): Grid<T> {
@@ -54,10 +46,6 @@ export class GridPosition<T> {
 
   isSamePosition(other: GridPosition<T>): boolean {
     return this.#x === other.#x && this.#y === other.#y;
-  }
-
-  equals(other: GridPosition<T>): boolean {
-    return this.#grid === other.#grid && this.isSamePosition(other);
   }
 
   toString(): string {
@@ -98,33 +86,12 @@ export class DirectedGridPosition<T> extends GridPosition<T> {
     this.#direction = direction;
   }
 
-  static override fromString<T>(
-    grid: Grid<T>,
-    string: string,
-  ): DirectedGridPosition<T> {
-    const [pos, direction] = string.split(" ");
-    const [x, y] = pos.split(",").map(Number);
-    return new DirectedGridPosition(
-      grid,
-      x,
-      y,
-      direction as Direction,
-    );
-  }
-
   override createPosition(x: number, y: number): GridPosition<T> {
     return new DirectedGridPosition(this.grid, x, y, this.#direction);
   }
 
   get direction(): Direction {
     return this.#direction;
-  }
-
-  override equals(other: GridPosition<T>): boolean {
-    if (!(other instanceof DirectedGridPosition)) {
-      return false;
-    }
-    return super.equals(other) && this.#direction === other.#direction;
   }
 
   override toString(): string {
