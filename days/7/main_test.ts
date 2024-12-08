@@ -31,6 +31,6 @@ describe("day 7 solution", () => {
   });
 
   it("part 2", async () => {
-    expect(part2(await loadInput(7))).toBe(-1);
+    expect(part2(await loadInput(7))).toBe(348360680516005);
   });
 });
