@@ -13,15 +13,17 @@
     "jsr:@std/assert@1.0.0-rc.2": "1.0.0-rc.2",
     "jsr:@std/assert@^1.0.8": "1.0.8",
     "jsr:@std/assert@^1.0.9": "1.0.9",
+    "jsr:@std/async@^1.0.9": "1.0.9",
     "jsr:@std/bytes@^1.0.3": "1.0.4",
     "jsr:@std/cli@1.0.0-rc.2": "1.0.0-rc.2",
     "jsr:@std/collections@1": "1.0.9",
     "jsr:@std/data-structures@^1.0.4": "1.0.4",
     "jsr:@std/encoding@1.0.0-rc.2": "1.0.0-rc.2",
-    "jsr:@std/expect@1": "1.0.8",
+    "jsr:@std/expect@1": "1.0.9",
     "jsr:@std/expect@^1.0.9": "1.0.9",
     "jsr:@std/fmt@~0.225.4": "0.225.6",
     "jsr:@std/fs@^1.0.5": "1.0.6",
+    "jsr:@std/fs@^1.0.6": "1.0.6",
     "jsr:@std/internal@^1.0.5": "1.0.5",
     "jsr:@std/io@~0.224.2": "0.224.9",
     "jsr:@std/path@1": "1.0.8",
@@ -29,7 +31,7 @@
     "jsr:@std/path@^1.0.8": "1.0.8",
     "jsr:@std/semver@^1.0.3": "1.0.3",
     "jsr:@std/streams@^1.0.8": "1.0.8",
-    "jsr:@std/testing@^1.0.5": "1.0.5",
+    "jsr:@std/testing@^1.0.5": "1.0.6",
     "jsr:@std/testing@^1.0.6": "1.0.6",
     "jsr:@std/text@1.0.0-rc.1": "1.0.0-rc.1",
     "npm:@types/node@*": "22.5.4"
@@ -112,6 +114,9 @@
         "jsr:@std/internal"
       ]
     },
+    "@std/async@1.0.9": {
+      "integrity": "c6472fd0623b3f3daae023cdf7ca5535e1b721dfbf376562c0c12b3fb4867f91"
+    },
     "@std/bytes@1.0.4": {
       "integrity": "11a0debe522707c95c7b7ef89b478c13fb1583a7cfb9a85674cd2cc2e3a28abc"
     },
@@ -176,7 +181,7 @@
       "dependencies": [
         "jsr:@std/assert@^1.0.8",
         "jsr:@std/data-structures",
-        "jsr:@std/fs",
+        "jsr:@std/fs@^1.0.5",
         "jsr:@std/internal",
         "jsr:@std/path@^1.0.8"
       ]
@@ -185,7 +190,11 @@
       "integrity": "9192ded2d34065f4c959fdc1921fe836770abb9194410c2cc8a0fff4eff5c893",
       "dependencies": [
         "jsr:@std/assert@^1.0.9",
-        "jsr:@std/internal"
+        "jsr:@std/async",
+        "jsr:@std/data-structures",
+        "jsr:@std/fs@^1.0.6",
+        "jsr:@std/internal",
+        "jsr:@std/path@^1.0.8"
       ]
     },
     "@std/text@1.0.0-rc.1": {

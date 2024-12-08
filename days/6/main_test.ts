@@ -16,7 +16,7 @@ const input = [
   "......#...",
 ];
 
-describe.ignore("day 6 example", () => {
+describe("day 6 example", () => {
   it("part 1", () => {
     expect(part1(input)).toBe(41);
   });
@@ -26,12 +26,12 @@ describe.ignore("day 6 example", () => {
   });
 });
 
-describe.ignore("day 6 solution", () => {
+describe("day 6 solution", () => {
   it("part 1", async () => {
-    expect(part1(await loadInput(6))).toBe(-1);
+    expect(part1(await loadInput(6))).toBe(4826);
   });
 
-  it("part 2", async () => {
+  it.ignore("part 2", async () => {
     expect(part2(await loadInput(6))).toBe(-1);
   });
 });

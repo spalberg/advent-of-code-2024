@@ -43,6 +43,21 @@ export class Grid<T> {
 
   // TODO *fallingDiagonals()
 
+  findFirst(predicate: (value: T) => boolean): [number, number] | null {
+    for (let y = 0; y < this.height; y++) {
+      for (let x = 0; x < this.width; x++) {
+        if (predicate(this.at(x, y)!)) {
+          return [x, y];
+        }
+      }
+    }
+    return null;
+  }
+
+  isInBounds(x: number, y: number): boolean {
+    return x >= 0 && x < this.width && y >= 0 && y < this.height;
+  }
+
   #validatekDimensions() {
     if (this.#data.length === 0) {
       throw new Error("Grid is empty");
