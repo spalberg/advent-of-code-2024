@@ -17,9 +17,11 @@ export function part2(input: Array<string>) {
     let cur = a;
     while (
       addIfInBounds(cur = cur.add(displacement.mul(-1)), antiNodes, grid)
-    ) {}
+    ) { /** empty */ }
     cur = a;
-    while (addIfInBounds(cur = cur.add(displacement), antiNodes, grid)) {}
+    while (
+      addIfInBounds(cur = cur.add(displacement), antiNodes, grid)
+    ) { /** empty */ }
     antiNodes.push(a);
   });
 }
