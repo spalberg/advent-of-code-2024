@@ -35,9 +35,6 @@ function getGuardPositions(
   path: Array<DirectedGridPosition<string>>,
   isObstacle = (p: DirectedGridPosition<string>) => p.value === "#",
 ): { path: Array<DirectedGridPosition<string>>; isLoop: boolean } {
-  if (path.length === 0) {
-    throw new Error("Path must contain at least one position");
-  }
   const visited = new Set(path.map((pos) => pos.toString()));
   let guardPosition = path[path.length - 1];
   while (true) {

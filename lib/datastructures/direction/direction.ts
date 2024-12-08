@@ -37,6 +37,10 @@ const directions = [
   "up-left",
 ] satisfies Array<Direction>;
 
+const directionsLookup = Object.fromEntries(
+  directions.map((dir, i) => [dir, i]),
+) as Record<Direction, number>;
+
 export function getDirectionVector(direction: Direction): [number, number] {
   switch (direction) {
     case "up-left":
@@ -54,7 +58,7 @@ export function getDirectionVector(direction: Direction): [number, number] {
 export type Angle = 45 | 90 | 135 | 180 | 225 | 270 | 315 | 360;
 
 export function turn(direction: Direction, angle: Angle): Direction {
-  const index = directions.indexOf(direction);
-  const newIndex = (index + angle / 45) % directions.length;
+  const newIndex = (directionsLookup[direction] + angle / 45) %
+    directions.length;
   return directions[newIndex];
 }
