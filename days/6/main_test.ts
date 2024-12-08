@@ -21,8 +21,8 @@ describe("day 6 example", () => {
     expect(part1(input)).toBe(41);
   });
 
-  it.ignore("part 2", () => {
-    expect(part2(input)).toBe(-1);
+  it("part 2", () => {
+    expect(part2(input)).toBe(6);
   });
 });
 
@@ -31,7 +31,7 @@ describe("day 6 solution", () => {
     expect(part1(await loadInput(6))).toBe(4826);
   });
 
-  it.ignore("part 2", async () => {
-    expect(part2(await loadInput(6))).toBe(-1);
+  it("part 2", async () => {
+    expect(part2(await loadInput(6))).toBe(1721);
   });
 });
