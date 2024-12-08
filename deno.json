@@ -1,9 +1,11 @@
 {
   "name": "@aoc/2024",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "license": "MIT",
   "exports": "./cli.ts",
-  "workspace": ["./lib/datastructures"],
+  "workspace": [
+    "./lib/datastructures"
+  ],
   "tasks": {
     "cli": "deno run -RN ./cli.ts",
     "update:version": "deno run --quiet -A ./scripts/update_version.ts"
