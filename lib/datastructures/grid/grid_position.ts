@@ -52,6 +52,15 @@ export class GridPosition<T> {
     return this.#grid.at(this.#x, this.#y);
   }
 
+  equals(other: GridPosition<T>): boolean {
+    return this.#grid === other.#grid && this.#x === other.#x &&
+      this.#y === other.#y;
+  }
+
+  toString(): string {
+    return this.positionString;
+  }
+
   move(direction: Direction, steps = 1): GridPosition<T> | null {
     const [dx, dy] = getDirectionVector(direction);
     const [x, y] = [this.#x + dx * steps, this.#y + dy * steps];
@@ -60,13 +69,13 @@ export class GridPosition<T> {
 
   *moveUntil(
     direction: Direction,
-    predicate: (value: T) => boolean,
+    predicate: (pos: GridPosition<T>) => boolean,
   ): Generator<GridPosition<T>> {
     // deno-lint-ignore no-this-alias
     let position: GridPosition<T> = this;
     while (true) {
       const next = position.move(direction);
-      if (next == null || predicate(next.value!)) {
+      if (next == null || predicate(next)) {
         return;
       }
       yield position = next;
@@ -86,6 +95,20 @@ export class DirectedGridPosition<T> extends GridPosition<T> {
     this.#direction = direction;
   }
 
+  static override fromString<T>(
+    grid: Grid<T>,
+    string: string,
+  ): DirectedGridPosition<T> {
+    const [pos, direction] = string.split(" ");
+    const [x, y] = pos.split(",").map(Number);
+    return new DirectedGridPosition(
+      grid,
+      x,
+      y,
+      direction as Direction,
+    );
+  }
+
   override createPosition(x: number, y: number): GridPosition<T> {
     return new DirectedGridPosition(this.grid, x, y, this.#direction);
   }
@@ -94,14 +117,28 @@ export class DirectedGridPosition<T> extends GridPosition<T> {
     return this.#direction;
   }
 
+  override equals(other: GridPosition<T>): boolean {
+    if (!(other instanceof DirectedGridPosition)) {
+      return false;
+    }
+    return super.equals(other) && this.#direction === other.#direction;
+  }
+
+  override toString(): string {
+    return `${super.toString()} ${this.#direction}`;
+  }
+
   moveInDirection(steps = 1): DirectedGridPosition<T> | null {
     return this.move(this.#direction, steps) as DirectedGridPosition<T> | null;
   }
 
   moveInDirectionUntil(
-    predicate: (value: T) => boolean,
+    predicate: (pos: DirectedGridPosition<T>) => boolean,
   ): Generator<DirectedGridPosition<T>> {
-    return this.moveUntil(this.#direction, predicate) as Generator<
+    return this.moveUntil(
+      this.#direction,
+      predicate as ((pos: GridPosition<T>) => boolean),
+    ) as Generator<
       DirectedGridPosition<T>
     >;
   }

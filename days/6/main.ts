@@ -3,80 +3,55 @@ import { loadInput } from "utils";
 
 export function part1(input: Array<string>) {
   const guardPosition = parseInput(input);
-  const visited = getDistinctGuardPositions(guardPosition);
-  return visited.size;
+  const { path } = getGuardPositions([guardPosition]);
+  return new Set(path.map((pos) => pos.positionString)).size;
 }
 
 export function part2(input: Array<string>) {
   const guardPosition = parseInput(input);
-  const obstaclePositions = getLoopInducingObstaclePositions(guardPosition);
+  const { path } = getGuardPositions([guardPosition]);
+  const obstaclePositions = new Set<string>();
+  for (let i = 2; i < path.length; i++) {
+    const subPath = path.slice(0, i - 1);
+    if (
+      path[i].value === "^" ||
+      subPath.map((pos) => pos.positionString).includes(path[i].positionString)
+    ) {
+      continue;
+    }
+    const { isLoop } = getGuardPositions(
+      subPath,
+      (p) => p.value === "#" || (p.x === path[i].x && p.y === path[i].y),
+    );
+    if (isLoop) {
+      obstaclePositions.add(path[i].positionString);
+    }
+  }
   return obstaclePositions.size;
 }
 
-function getDistinctGuardPositions(
-  initialGuardPosition: DirectedGridPosition<string>,
-) {
-  return getGuardPositions(
-    initialGuardPosition,
-    new Set(),
-    (pos) => pos.positionString,
-    false,
-  )[0];
-}
-
-function getLoopInducingObstaclePositions(
-  initialGuardPosition: DirectedGridPosition<string>,
-): Set<string> {
-  const obstaclePosition = new Set<string>();
-  const visited = new Set<string>();
-  const positionIdGenerator = (pos: DirectedGridPosition<string>) =>
-    `${pos.positionString} ${pos.direction}`;
-  let guardPosition = initialGuardPosition;
-  visited.add(positionIdGenerator(guardPosition));
-  while (true) {
-    for (
-      guardPosition of guardPosition.moveInDirectionUntil((v) => v === "#")
-    ) {
-      visited.add(positionIdGenerator(guardPosition));
-      const potentialObstaclePosition = guardPosition.moveInDirection();
-      if (potentialObstaclePosition != null) {
-        const lastPosition = getGuardPositions(
-          guardPosition.turnRight(),
-          new Set(visited),
-          positionIdGenerator,
-          true,
-        )[1];
-        if (lastPosition.moveInDirection() != null) {
-          obstaclePosition.add(potentialObstaclePosition.positionString);
-        }
-      }
-    }
-    if (guardPosition.moveInDirection() == null) return obstaclePosition;
-    guardPosition = guardPosition.turnRight();
-  }
-}
-
 function getGuardPositions(
-  initialGuardPosition: DirectedGridPosition<string>,
-  visited: Set<string>,
-  positionIdGenerator: (position: DirectedGridPosition<string>) => string,
-  breakOnAlreadyVisited: boolean,
-): [Set<string>, DirectedGridPosition<string>] {
-  let guardPosition = initialGuardPosition;
-  visited.add(guardPosition.positionString);
+  path: Array<DirectedGridPosition<string>>,
+  isObstacle = (p: DirectedGridPosition<string>) => p.value === "#",
+): { path: Array<DirectedGridPosition<string>>; isLoop: boolean } {
+  if (path.length === 0) {
+    throw new Error("Path must contain at least one position");
+  }
+  let guardPosition = path[path.length - 1];
   while (true) {
     for (
-      guardPosition of guardPosition.moveInDirectionUntil((v) => v === "#")
+      guardPosition of guardPosition.moveInDirectionUntil(isObstacle)
     ) {
-      if (
-        breakOnAlreadyVisited && visited.has(positionIdGenerator(guardPosition))
-      ) {
-        return [visited, guardPosition];
+      const alreadyInPath = path.findIndex((pos) =>
+        pos.equals(guardPosition)
+      ) >= 0;
+      if (alreadyInPath) {
+        return { path, isLoop: true };
       }
-      visited.add(positionIdGenerator(guardPosition));
+      path.push(guardPosition);
     }
     if (guardPosition.moveInDirection() == null) {
-      return [visited, guardPosition];
+      return { path, isLoop: false };
     }
     guardPosition = guardPosition.turnRight();
   }
