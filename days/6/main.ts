@@ -12,19 +12,20 @@ export function part2(input: Array<string>) {
   const { path } = getGuardPositions([guardPosition]);
   const obstaclePositions = new Set<string>();
   for (let i = 2; i < path.length; i++) {
+    const currentPos = path[i];
     const subPath = path.slice(0, i - 1);
     if (
-      path[i].value === "^" ||
-      subPath.map((pos) => pos.positionString).includes(path[i].positionString)
+      currentPos.value === "^" ||
+      subPath.find((p) => p.isSamePosition(currentPos))
     ) {
       continue;
     }
     const { isLoop } = getGuardPositions(
       subPath,
-      (p) => p.value === "#" || (p.x === path[i].x && p.y === path[i].y),
+      (p) => p.value === "#" || p.isSamePosition(currentPos),
     );
     if (isLoop) {
-      obstaclePositions.add(path[i].positionString);
+      obstaclePositions.add(currentPos.positionString);
     }
   }
   return obstaclePositions.size;
