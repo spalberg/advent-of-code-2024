@@ -50,4 +50,34 @@ describe("DirectedGridPosition", () => {
     expect(dirPos(1, 1, "right").value).toBe(".");
     expect(() => dirPos(8, 8, "up")).toThrow();
   });
+
+  it("method moveInDirection", () => {
+    expect(dirPos(1, 1, "up").moveInDirection()?.position).toEqual([1, 0]);
+    expect(dirPos(1, 1, "down").moveInDirection()?.position).toEqual([1, 2]);
+    expect(dirPos(1, 1, "left").moveInDirection()?.position).toEqual([0, 1]);
+    expect(dirPos(1, 1, "right").moveInDirection()?.position).toEqual([2, 1]);
+  });
+
+  it("method moveInDirectionUntil", () => {
+    const path = [
+      ...dirPos(0, 0, "down-right").moveInDirectionUntil((p) =>
+        p.value === "#"
+      ),
+    ];
+    expect(path).toHaveLength(2);
+    expect(path[0].position).toEqual([1, 1]);
+    expect(path[1].position).toEqual([2, 2]);
+  });
+
+  it("method turn", () => {
+    expect(dirPos(1, 1, "up").turn(45).direction).toBe("up-right");
+  });
+
+  it("method turnLeft", () => {
+    expect(dirPos(1, 1, "up-left").turnLeft().direction).toBe("down-left");
+  });
+
+  it("method turnRight", () => {
+    expect(dirPos(1, 1, "up-left").turnRight().direction).toBe("up-right");
+  });
 });
