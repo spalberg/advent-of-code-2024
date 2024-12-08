@@ -20,7 +20,7 @@ jobs:
         with:
           ref: ${{ inputs.ref || github.ref }}
       - uses: denoland/setup-deno@v2
-      - run: deno publish
+      - run: deno publish --quiet
 
   deploy:
     runs-on: ubuntu-latest
