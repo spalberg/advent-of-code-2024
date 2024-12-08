@@ -6,7 +6,7 @@
   "workspace": ["./lib/datastructures"],
   "tasks": {
     "cli": "deno run -RN ./cli.ts",
-    "update:version": "deno run -A ./scripts/update_version.ts"
+    "update:version": "deno run --quiet -A ./scripts/update_version.ts"
   },
   "imports": {
     "@cliffy/ansi": "jsr:@cliffy/ansi@1.0.0-rc.5",

@@ -1,10 +1,10 @@
 import { loadInput } from "utils";
 
-export function part1(input: Array<string>) {
+export function part1(_input: Array<string>) {
   return 0;
 }
 
-export function part2(input: Array<string>) {
+export function part2(_input: Array<string>) {
   return 0;
 }
 
