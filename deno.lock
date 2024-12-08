@@ -9,6 +9,7 @@
     "jsr:@cliffy/keycode@1.0.0-rc.5": "1.0.0-rc.5",
     "jsr:@cliffy/prompt@1.0.0-rc.5": "1.0.0-rc.5",
     "jsr:@cliffy/table@1.0.0-rc.5": "1.0.0-rc.5",
+    "jsr:@pal/datastructures@0.1": "0.1.0",
     "jsr:@std/assert@1": "1.0.8",
     "jsr:@std/assert@1.0.0-rc.2": "1.0.0-rc.2",
     "jsr:@std/assert@^1.0.8": "1.0.8",
@@ -20,9 +21,7 @@
     "jsr:@std/data-structures@^1.0.4": "1.0.4",
     "jsr:@std/encoding@1.0.0-rc.2": "1.0.0-rc.2",
     "jsr:@std/expect@1": "1.0.9",
-    "jsr:@std/expect@^1.0.9": "1.0.9",
     "jsr:@std/fmt@~0.225.4": "0.225.6",
-    "jsr:@std/fs@^1.0.5": "1.0.6",
     "jsr:@std/fs@^1.0.6": "1.0.6",
     "jsr:@std/internal@^1.0.5": "1.0.5",
     "jsr:@std/io@~0.224.2": "0.224.9",
@@ -32,7 +31,6 @@
     "jsr:@std/semver@^1.0.3": "1.0.3",
     "jsr:@std/streams@^1.0.8": "1.0.8",
     "jsr:@std/testing@^1.0.5": "1.0.6",
-    "jsr:@std/testing@^1.0.6": "1.0.6",
     "jsr:@std/text@1.0.0-rc.1": "1.0.0-rc.1",
     "npm:@types/node@*": "22.5.4"
   },
@@ -98,6 +96,9 @@
         "jsr:@std/cli",
         "jsr:@std/fmt"
       ]
+    },
+    "@pal/datastructures@0.1.0": {
+      "integrity": "e5a08f016327636e1dff7d7fea2742274a83f4c3947cca17eb34e887e2eb56c8"
     },
     "@std/assert@1.0.0-rc.2": {
       "integrity": "0484eab1d76b55fca1c3beaff485a274e67dd3b9f065edcbe70030dfc0b964d3"
@@ -181,7 +182,7 @@
       "dependencies": [
         "jsr:@std/assert@^1.0.8",
         "jsr:@std/data-structures",
-        "jsr:@std/fs@^1.0.5",
+        "jsr:@std/fs",
         "jsr:@std/internal",
         "jsr:@std/path@^1.0.8"
       ]
@@ -192,7 +193,7 @@
         "jsr:@std/assert@^1.0.9",
         "jsr:@std/async",
         "jsr:@std/data-structures",
-        "jsr:@std/fs@^1.0.6",
+        "jsr:@std/fs",
         "jsr:@std/internal",
         "jsr:@std/path@^1.0.8"
       ]
@@ -217,20 +218,13 @@
       "jsr:@cliffy/ansi@1.0.0-rc.5",
       "jsr:@cliffy/command@1.0.0-rc.5",
       "jsr:@cliffy/prompt@1.0.0-rc.5",
+      "jsr:@pal/datastructures@0.1",
       "jsr:@std/collections@1",
       "jsr:@std/expect@1",
       "jsr:@std/path@1",
       "jsr:@std/semver@^1.0.3",
       "jsr:@std/streams@^1.0.8",
       "jsr:@std/testing@^1.0.5"
-    ],
-    "members": {
-      "lib/datastructures": {
-        "dependencies": [
-          "jsr:@std/expect@^1.0.9",
-          "jsr:@std/testing@^1.0.6"
-        ]
-      }
-    }
+    ]
   }
 }
