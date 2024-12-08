@@ -52,9 +52,12 @@ export class GridPosition<T> {
     return this.#grid.at(this.#x, this.#y);
   }
 
+  isSamePosition(other: GridPosition<T>): boolean {
+    return this.#x === other.#x && this.#y === other.#y;
+  }
+
   equals(other: GridPosition<T>): boolean {
-    return this.#grid === other.#grid && this.#x === other.#x &&
-      this.#y === other.#y;
+    return this.#grid === other.#grid && this.isSamePosition(other);
   }
 
   toString(): string {

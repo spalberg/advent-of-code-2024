@@ -37,18 +37,18 @@ function getGuardPositions(
   if (path.length === 0) {
     throw new Error("Path must contain at least one position");
   }
+  const visited = new Set(path.map((pos) => pos.toString()));
   let guardPosition = path[path.length - 1];
   while (true) {
     for (
       guardPosition of guardPosition.moveInDirectionUntil(isObstacle)
     ) {
-      const alreadyInPath = path.findIndex((pos) =>
-        pos.equals(guardPosition)
-      ) >= 0;
-      if (alreadyInPath) {
+      const positionAsString = guardPosition.toString();
+      if (visited.has(positionAsString)) {
         return { path, isLoop: true };
       }
       path.push(guardPosition);
+      visited.add(positionAsString);
     }
     if (guardPosition.moveInDirection() == null) {
       return { path, isLoop: false };

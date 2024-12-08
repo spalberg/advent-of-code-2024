@@ -16,6 +16,15 @@ const input = [
   "......#...",
 ];
 
+// day 6 example ...
+//   part 1 ... ok (3ms)
+//   part 2 ... ok (3ms)
+// day 6 example ... ok (8ms)
+// day 6 solution ...
+//   part 1 ... ok (133ms)
+//   part 2 ... ok (54s)
+// day 6 solution ... ok (54s)
+
 describe("day 6 example", () => {
   it("part 1", () => {
     expect(part1(input)).toBe(41);
