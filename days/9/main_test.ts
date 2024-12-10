@@ -20,7 +20,7 @@ describe("day 9 solution", () => {
     expect(part1(await loadInput(9))).toBe(6279058075753);
   });
 
-  it.ignore("part 2", async () => {
+  it("part 2", async () => {
     expect(part2(await loadInput(9))).toBe(-1);
   });
 });
