@@ -12,7 +12,7 @@ export function part1(input: Array<string>) {
 export function part2(input: Array<string>) {
   let total = 0;
   for (const region of extractRegions(input)) {
-    total += region.size * calculatePerimeter(region);
+    total += region.size * calculateNumberOfSides(region);
   }
   return total;
 }
@@ -91,6 +91,34 @@ function calculatePerimeter(region: Region): number {
   return perimeter;
 }
 
+function calculateNumberOfSides(region: Region): number {
+  const verticalLeftSides = new Map<number, Array<number>>();
+  const verticalRightSides = new Map<number, Array<number>>();
+  const horizontalTopSides = new Map<number, Array<number>>();
+  const horizontalBottomSides = new Map<number, Array<number>>();
+  for (const c of region) {
+    const { x, y } = fromCoordId(c);
+    if (region.has(coordId({ x: x - 1, y })) === false) {
+      computeIfAbsent(verticalLeftSides, x, () => []).push(y);
+    }
+    if (region.has(coordId({ x: x + 1, y })) === false) {
+      computeIfAbsent(verticalRightSides, x, () => []).push(y);
+    }
+    if (region.has(coordId({ x, y: y - 1 })) === false) {
+      computeIfAbsent(horizontalTopSides, y, () => []).push(x);
+    }
+    if (region.has(coordId({ x, y: y + 1 })) === false) {
+      computeIfAbsent(horizontalBottomSides, y, () => []).push(x);
+    }
+  }
+  return [
+    ...verticalLeftSides.values(),
+    ...verticalRightSides.values(),
+    ...horizontalTopSides.values(),
+    ...horizontalBottomSides.values(),
+  ].map(getNumberOfContinousBlocks).reduce((a, b) => a + b, 0);
+}
+
 function coordId(coord: Coord): CoordId {
   return `${coord.x},${coord.y}`;
 }
@@ -98,6 +126,32 @@ function coordId(coord: Coord): CoordId {
 function fromCoordId(coordId: CoordId): Coord {
   const [x, y] = coordId.split(",").map(Number);
   return { x, y };
+}
+
+function computeIfAbsent<K, V>(
+  map: Map<K, V>,
+  key: K,
+  defaultValue: () => V,
+): V {
+  let value = map.get(key);
+  if (value == null) {
+    value = defaultValue();
+    map.set(key, value);
+  }
+  return value;
+}
+
+function getNumberOfContinousBlocks(numbers: Array<number>) {
+  const sorted = numbers.toSorted();
+  let count = 1;
+  let last = sorted[0];
+  for (let i = 1; i < sorted.length; i++) {
+    if (sorted[i] !== last + 1) {
+      count++;
+    }
+    last = sorted[i];
+  }
+  return count;
 }
 
 if (import.meta.main) {
