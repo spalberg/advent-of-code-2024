@@ -3,19 +3,18 @@
   "specifiers": {
     "jsr:@cliffy/ansi@1.0.0-rc.5": "1.0.0-rc.5",
     "jsr:@cliffy/ansi@1.0.1": "1.0.1",
-    "jsr:@cliffy/command@1.0.0-rc.5": "1.0.0-rc.5",
-    "jsr:@cliffy/flags@1.0.0-rc.5": "1.0.0-rc.5",
+    "jsr:@cliffy/command@1.0.1": "1.0.1",
+    "jsr:@cliffy/flags@1.0.1": "1.0.1",
     "jsr:@cliffy/internal@1.0.0-rc.5": "1.0.0-rc.5",
     "jsr:@cliffy/internal@1.0.1": "1.0.1",
     "jsr:@cliffy/keycode@1.0.0-rc.5": "1.0.0-rc.5",
     "jsr:@cliffy/prompt@1.0.0-rc.5": "1.0.0-rc.5",
-    "jsr:@cliffy/table@1.0.0-rc.5": "1.0.0-rc.5",
+    "jsr:@cliffy/table@1.0.1": "1.0.1",
     "jsr:@pal/datastructures@~0.1.1": "0.1.1",
     "jsr:@std/assert@1.0.0-rc.2": "1.0.0-rc.2",
     "jsr:@std/assert@^1.0.19": "1.0.19",
     "jsr:@std/async@^1.3.0": "1.3.0",
     "jsr:@std/bytes@^1.0.6": "1.0.6",
-    "jsr:@std/cli@1.0.0-rc.2": "1.0.0-rc.2",
     "jsr:@std/collections@1": "1.1.7",
     "jsr:@std/data-structures@^1.0.11": "1.0.11",
     "jsr:@std/encoding@1.0.0-rc.2": "1.0.0-rc.2",
@@ -32,9 +31,11 @@
     "jsr:@std/path@1.0.0-rc.2": "1.0.0-rc.2",
     "jsr:@std/path@^1.1.4": "1.1.4",
     "jsr:@std/semver@^1.0.3": "1.0.3",
+    "jsr:@std/semver@^1.0.8": "1.0.8",
     "jsr:@std/streams@^1.0.8": "1.1.0",
     "jsr:@std/testing@^1.0.5": "1.0.18",
     "jsr:@std/text@1.0.0-rc.1": "1.0.0-rc.1",
+    "jsr:@std/text@^1.0.17": "1.0.18",
     "npm:@types/node@*": "22.5.4"
   },
   "jsr": {
@@ -55,20 +56,22 @@
         "jsr:@std/io@~0.225.3"
       ]
     },
-    "@cliffy/command@1.0.0-rc.5": {
-      "integrity": "55e00a1d0ae38152fb275a89494a81ffb9b144eb9060107c0be5af46e1ba736c",
+    "@cliffy/command@1.0.1": {
+      "integrity": "0172d9c7d8aeb26b8f4f44ffa833247e4fbab707e258ee271e10a2a2f87b531d",
       "dependencies": [
         "jsr:@cliffy/flags",
-        "jsr:@cliffy/internal@1.0.0-rc.5",
+        "jsr:@cliffy/internal@1.0.1",
         "jsr:@cliffy/table",
-        "jsr:@std/fmt@~0.225.4",
-        "jsr:@std/text"
+        "jsr:@std/fmt@^1.0.9",
+        "jsr:@std/semver@^1.0.8",
+        "jsr:@std/text@^1.0.17"
       ]
     },
-    "@cliffy/flags@1.0.0-rc.5": {
-      "integrity": "bd33b7b399e0af353f5516d87a2d552d46ee7e7f4a6f0c0bc65fcce750710217",
+    "@cliffy/flags@1.0.1": {
+      "integrity": "468dcf65acb33b51ecb2e232c30603209c528b1d1bd9e065921b57fcb342cb01",
       "dependencies": [
-        "jsr:@std/text"
+        "jsr:@cliffy/internal@1.0.1",
+        "jsr:@std/text@^1.0.17"
       ]
     },
     "@cliffy/internal@1.0.0-rc.5": {
@@ -90,14 +93,13 @@
         "jsr:@std/fmt@~0.225.4",
         "jsr:@std/io@~0.224.2",
         "jsr:@std/path@1.0.0-rc.2",
-        "jsr:@std/text"
+        "jsr:@std/text@1.0.0-rc.1"
       ]
     },
-    "@cliffy/table@1.0.0-rc.5": {
-      "integrity": "2b3e1b4764bbb56b0c39aeba95bc0bb551d9bd4475fbb6d1ce368c08b7ef9eb3",
+    "@cliffy/table@1.0.1": {
+      "integrity": "2b1baa3ef9e16ecb7f3fdcf1deb9f5fa5ffa308ea0e68478224a4c2d44d58166",
       "dependencies": [
-        "jsr:@std/cli",
-        "jsr:@std/fmt@~0.225.4"
+        "jsr:@std/fmt@^1.0.9"
       ]
     },
     "@pal/datastructures@0.1.1": {
@@ -117,9 +119,6 @@
     },
     "@std/bytes@1.0.6": {
       "integrity": "f6ac6adbd8ccd99314045f5703e23af0a68d7f7e58364b47d2c7f408aeb5820a"
-    },
-    "@std/cli@1.0.0-rc.2": {
-      "integrity": "97dfae82b9f0e189768ebfa7a5da53375955b94bad0a1804f8e3b73563b03787"
     },
     "@std/collections@1.1.7": {
       "integrity": "56f659d011218a69740b12829cf5ea2c9b70bbed0af02597e27dc1eb5e69e208"
@@ -174,6 +173,9 @@
     "@std/semver@1.0.3": {
       "integrity": "7c139c6076a080eeaa4252c78b95ca5302818d7eafab0470d34cafd9930c13c8"
     },
+    "@std/semver@1.0.8": {
+      "integrity": "dc830e8b8b6a380c895d53fbfd1258dc253704ca57bbe1629ac65fd7830179b7"
+    },
     "@std/streams@1.1.0": {
       "integrity": "2f7024d841f343fd478afe0c958a3f0f068ef2a0d2bcc954f550f97ac1fa22e3",
       "dependencies": [
@@ -193,6 +195,9 @@
     },
     "@std/text@1.0.0-rc.1": {
       "integrity": "34c722203e87ee12792c8d4a0cd2ee0e001341cbce75b860fc21be19d62232b0"
+    },
+    "@std/text@1.0.18": {
+      "integrity": "d199e516f80599813c64fd4aee5b8f26f6f7d1e1434c88fd153aeea6fea6a9b9"
     }
   },
   "npm": {
@@ -209,7 +214,7 @@
   "workspace": {
     "dependencies": [
       "jsr:@cliffy/ansi@1.0.1",
-      "jsr:@cliffy/command@1.0.0-rc.5",
+      "jsr:@cliffy/command@1.0.1",
       "jsr:@cliffy/prompt@1.0.0-rc.5",
       "jsr:@pal/datastructures@~0.1.1",
       "jsr:@std/collections@1",
