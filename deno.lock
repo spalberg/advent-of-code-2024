@@ -2,9 +2,11 @@
   "version": "5",
   "specifiers": {
     "jsr:@cliffy/ansi@1.0.1": "1.0.1",
+    "jsr:@cliffy/ansi@1.1.0": "1.1.0",
     "jsr:@cliffy/command@1.0.1": "1.0.1",
     "jsr:@cliffy/flags@1.0.1": "1.0.1",
     "jsr:@cliffy/internal@1.0.1": "1.0.1",
+    "jsr:@cliffy/internal@1.1.0": "1.1.0",
     "jsr:@cliffy/keycode@1.0.1": "1.0.1",
     "jsr:@cliffy/prompt@1.0.1": "1.0.1",
     "jsr:@cliffy/table@1.0.1": "1.0.1",
@@ -34,7 +36,15 @@
     "@cliffy/ansi@1.0.1": {
       "integrity": "46be51d0993a916dbed68564a6630dc1a742ebb0247744e04bc17e85d72f5bed",
       "dependencies": [
-        "jsr:@cliffy/internal",
+        "jsr:@cliffy/internal@1.0.1",
+        "jsr:@std/encoding",
+        "jsr:@std/io"
+      ]
+    },
+    "@cliffy/ansi@1.1.0": {
+      "integrity": "f95946660bf07c34017b8eb09240f0ef346a201284be8f1c33f372410f59edf4",
+      "dependencies": [
+        "jsr:@cliffy/internal@1.1.0",
         "jsr:@std/encoding",
         "jsr:@std/fmt",
         "jsr:@std/io"
@@ -44,7 +54,7 @@
       "integrity": "0172d9c7d8aeb26b8f4f44ffa833247e4fbab707e258ee271e10a2a2f87b531d",
       "dependencies": [
         "jsr:@cliffy/flags",
-        "jsr:@cliffy/internal",
+        "jsr:@cliffy/internal@1.0.1",
         "jsr:@cliffy/table",
         "jsr:@std/fmt",
         "jsr:@std/semver@^1.0.8",
@@ -54,12 +64,15 @@
     "@cliffy/flags@1.0.1": {
       "integrity": "468dcf65acb33b51ecb2e232c30603209c528b1d1bd9e065921b57fcb342cb01",
       "dependencies": [
-        "jsr:@cliffy/internal",
+        "jsr:@cliffy/internal@1.0.1",
         "jsr:@std/text"
       ]
     },
     "@cliffy/internal@1.0.1": {
       "integrity": "9e2bba59ad559b790f09c57219c727a69f0179ebabc07f1bf9db25232b606760"
+    },
+    "@cliffy/internal@1.1.0": {
+      "integrity": "433dd7755680d0da6b0a6186694327f6fd8e80807be314cf4bb06270bab28023"
     },
     "@cliffy/keycode@1.0.1": {
       "integrity": "b01053b39bce5536e36aff9b262d84a7b289bcff03d904f3cf60f9dc1605ce9f"
@@ -67,8 +80,8 @@
     "@cliffy/prompt@1.0.1": {
       "integrity": "717265ab9a2ad2a3c06d2a090bb3068f1a5a5efd6ea3c6da9ea09274f74830cd",
       "dependencies": [
-        "jsr:@cliffy/ansi",
-        "jsr:@cliffy/internal",
+        "jsr:@cliffy/ansi@1.0.1",
+        "jsr:@cliffy/internal@1.0.1",
         "jsr:@cliffy/keycode",
         "jsr:@std/assert",
         "jsr:@std/fmt",
@@ -176,7 +189,7 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@cliffy/ansi@1.0.1",
+      "jsr:@cliffy/ansi@1.1.0",
       "jsr:@cliffy/command@1.0.1",
       "jsr:@cliffy/prompt@1.0.1",
       "jsr:@pal/datastructures@~0.1.1",
