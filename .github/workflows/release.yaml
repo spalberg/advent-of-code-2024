@@ -28,7 +28,7 @@ jobs:
     outputs:
       version: ${{ steps.update-version.outputs.version }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       - uses: denoland/setup-deno@v2
       - run: deno task update:version ${{ github.event.inputs.release-type }}
         id: update-version
