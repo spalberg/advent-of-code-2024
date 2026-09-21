@@ -1,14 +1,13 @@
 {
   "version": "5",
   "specifiers": {
-    "jsr:@cliffy/ansi@1.2.1": "1.2.1",
     "jsr:@cliffy/ansi@1.3.1": "1.3.1",
+    "jsr:@cliffy/ansi@^1.3.1": "1.3.1",
     "jsr:@cliffy/command@1.3.1": "1.3.1",
     "jsr:@cliffy/flags@^1.3.1": "1.3.1",
-    "jsr:@cliffy/internal@1.2.1": "1.2.1",
     "jsr:@cliffy/internal@^1.3.1": "1.3.1",
-    "jsr:@cliffy/keycode@1.2.1": "1.2.1",
-    "jsr:@cliffy/prompt@1.2.1": "1.2.1",
+    "jsr:@cliffy/keycode@^1.3.1": "1.3.1",
+    "jsr:@cliffy/prompt@1.3.1": "1.3.1",
     "jsr:@cliffy/table@^1.3.1": "1.3.1",
     "jsr:@cliffy/upgrade@^1.3.1": "1.3.1",
     "jsr:@pal/datastructures@~0.1.1": "0.1.1",
@@ -17,7 +16,6 @@
     "jsr:@std/bytes@^1.0.6": "1.0.6",
     "jsr:@std/collections@1": "1.1.7",
     "jsr:@std/data-structures@^1.1.2": "1.1.2",
-    "jsr:@std/encoding@^1.0.10": "1.0.11",
     "jsr:@std/encoding@^1.0.11": "1.0.11",
     "jsr:@std/expect@1": "1.0.20",
     "jsr:@std/fmt@^1.0.10": "1.0.10",
@@ -30,27 +28,19 @@
     "jsr:@std/path@^1.1.6": "1.1.6",
     "jsr:@std/semver@^1.0.3": "1.0.8",
     "jsr:@std/semver@^1.0.8": "1.0.8",
-    "jsr:@std/streams@^1.0.17": "1.1.0",
-    "jsr:@std/streams@^1.0.8": "1.1.0",
+    "jsr:@std/streams@^1.0.17": "1.1.2",
+    "jsr:@std/streams@^1.0.8": "1.1.2",
     "jsr:@std/tar@~0.1.10": "0.1.10",
     "jsr:@std/testing@^1.0.5": "1.0.20",
     "jsr:@std/text@^1.0.19": "1.0.19",
     "npm:@types/node@*": "22.5.4"
   },
   "jsr": {
-    "@cliffy/ansi@1.2.1": {
-      "integrity": "b8702def9c0110b6eeb2b3b71e0b26cbe0a427facbb4f9c0189da0ba19feb549",
-      "dependencies": [
-        "jsr:@cliffy/internal@1.2.1",
-        "jsr:@std/encoding@^1.0.10",
-        "jsr:@std/io"
-      ]
-    },
     "@cliffy/ansi@1.3.1": {
       "integrity": "b6ffd9c79a42cd68fc412d4e520c6bbbdde3c74dba182d017c46790596e003d7",
       "dependencies": [
-        "jsr:@cliffy/internal@^1.3.1",
-        "jsr:@std/encoding@^1.0.11",
+        "jsr:@cliffy/internal",
+        "jsr:@std/encoding",
         "jsr:@std/fmt",
         "jsr:@std/io"
       ]
@@ -59,7 +49,7 @@
       "integrity": "366ab6d5f68abe3ded22c09f65c151cfba600fa26690a4763f390c2f1e07ca4d",
       "dependencies": [
         "jsr:@cliffy/flags",
-        "jsr:@cliffy/internal@^1.3.1",
+        "jsr:@cliffy/internal",
         "jsr:@cliffy/table",
         "jsr:@cliffy/upgrade",
         "jsr:@std/fmt",
@@ -69,29 +59,26 @@
     "@cliffy/flags@1.3.1": {
       "integrity": "12f38efa0c8c2531c09f1b9a70bae4c4dcfbe01793bac11ac8ac92dddedaa294",
       "dependencies": [
-        "jsr:@cliffy/internal@^1.3.1",
+        "jsr:@cliffy/internal",
         "jsr:@std/text"
       ]
-    },
-    "@cliffy/internal@1.2.1": {
-      "integrity": "e398f41c6839d3d4d249c963bfcb1058013091425926d53a3cb482b1ca70684b"
     },
     "@cliffy/internal@1.3.1": {
       "integrity": "b309718fbfb8a226e74bc06f151d4459c2bdfa7ce68482decca75106bbf28816"
     },
-    "@cliffy/keycode@1.2.1": {
-      "integrity": "ce0a1e00986054da31bc767274acefdc923338a47e75ad1fc2046a11c87ace16"
+    "@cliffy/keycode@1.3.1": {
+      "integrity": "6e1b1e5f5ef2091d8228dc78dda3afd53187aa25c07a3395467ba6e1ab86cea2"
     },
-    "@cliffy/prompt@1.2.1": {
-      "integrity": "e468fae0f52093ff2099f5be0bbc7632348ab82a3b7337b12ddd888aeb5d6eed",
+    "@cliffy/prompt@1.3.1": {
+      "integrity": "00802daf9735808373b285c003085121053e7acd6d111c1df04812253b2d363f",
       "dependencies": [
-        "jsr:@cliffy/ansi@1.2.1",
-        "jsr:@cliffy/internal@1.2.1",
+        "jsr:@cliffy/ansi@^1.3.1",
+        "jsr:@cliffy/internal",
         "jsr:@cliffy/keycode",
         "jsr:@std/assert",
         "jsr:@std/fmt",
         "jsr:@std/io",
-        "jsr:@std/path@^1.1.5",
+        "jsr:@std/path@^1.1.6",
         "jsr:@std/text"
       ]
     },
@@ -104,7 +91,7 @@
     "@cliffy/upgrade@1.3.1": {
       "integrity": "9407061b092de52533d291e2488df24ec0718e28e024ac208603c0e16ae6407a",
       "dependencies": [
-        "jsr:@cliffy/internal@^1.3.1",
+        "jsr:@cliffy/internal",
         "jsr:@cliffy/table",
         "jsr:@std/fmt",
         "jsr:@std/path@^1.1.6",
@@ -171,8 +158,8 @@
     "@std/semver@1.0.8": {
       "integrity": "dc830e8b8b6a380c895d53fbfd1258dc253704ca57bbe1629ac65fd7830179b7"
     },
-    "@std/streams@1.1.0": {
-      "integrity": "2f7024d841f343fd478afe0c958a3f0f068ef2a0d2bcc954f550f97ac1fa22e3",
+    "@std/streams@1.1.2": {
+      "integrity": "0249bf9b78a999f57032ca4d8e7ccaa57579090242640b35ddc948fbb745d3af",
       "dependencies": [
         "jsr:@std/bytes"
       ]
@@ -213,7 +200,7 @@
     "dependencies": [
       "jsr:@cliffy/ansi@1.3.1",
       "jsr:@cliffy/command@1.3.1",
-      "jsr:@cliffy/prompt@1.2.1",
+      "jsr:@cliffy/prompt@1.3.1",
       "jsr:@pal/datastructures@~0.1.1",
       "jsr:@std/collections@1",
       "jsr:@std/expect@1",
