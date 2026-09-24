@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     name: format and lint
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       - uses: denoland/setup-deno@v2
       - run: deno fmt --check
       - run: deno lint --quiet
@@ -22,7 +22,7 @@ jobs:
       checks: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           submodules: true
           token: ${{ secrets.INPUTS_PAT }}
